@@ -299,7 +299,7 @@ rbind(car_xtab,
   pack_rows("bicycle", 43, 48)
 ```
 
-To understand the transitions towards different trip-making frequencies more clearly, including possible adaptations by mode, we convert the cross-tabulations to probability transition matrices, which we then visualize using circular plots. 
+To more clearly understand the transitions towards different trip-making frequencies, including possible adaptations, we convert the cross-tabulations to probability transition matrices, which we then visualize using circular plots. 
 
 Figures \ref{fig:circular-plot-1} to \ref{fig:circular-plot-4} present these plots. Each of the trip-making frequency sectors on the left hemisphere of the circle represents 100% of responses _before_ the pandemic. The links' size is proportional to the probability $p_{ij}$ of transitioning from frequency class $i$ before to the right hemisphere are proportional to the transition probabilities to each frequency _during_ the pandemic. There are three transparency levels for the links: solid colors are for $p_{ij}>2/3$, intermediate transparency is for $1/3 < p_{ij} \le 2/3$, and the more transparent links are for $p_{ij}\le 1/3$.
 
