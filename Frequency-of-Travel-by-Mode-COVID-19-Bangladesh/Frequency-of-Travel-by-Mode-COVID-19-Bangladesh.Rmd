@@ -15,7 +15,7 @@ footnote:
   - code: 1
     text: "Corresponding Author"
 abstract: |
- The COVID-19 pandemic has had a profound impact on mobility in every country and region around the world. Recent research illuminates the nature and magnitude of the changes in mobility, but the evidence is still scant in developing countries. The objective of this paper is to present an exploratory analysis of the changes in the frequency of trip-making by mode during the COVID-19 emergency in Bangladesh. The results confirm an overall loss of mobility in the form of reduced trip-making frequency by all modes, but the changes are not uniform across modes.
+ The COVID-19 pandemic has had a profound impact on mobility in every country and region around the world. Recent helps to illuminate some of the dimensions of change - however, the evidence is still scant in developing countries. The objective of this paper is to present an exploratory analysis of the changes in the frequency of trip-making by mode during the COVID-19 emergency in Bangladesh. The results confirm an overall loss of mobility in the form of reduced trip-making frequency by all modes, but the changes are not uniform across modes. In particular, there was a greater loss of mobility for bus, rickshaw, and CNG auto-rickshaw.
 
 journal: "Transport Findings"
 date: "`r Sys.Date()`"
@@ -25,6 +25,10 @@ bibliography: References.bib
 csl: elsevier-harvard.csl
 output: rticles::elsevier_article
 always_allow_html: true
+
+header-includes:
+ \usepackage{float}
+ \floatplacement{figure}{H}
 ---
 
 ```{r load-packages, include=FALSE}
@@ -234,81 +238,6 @@ save(freq_by_mode_long,
 load("Trip-Frequency-Bangladesh.RData")
 ```
 
-Research Questions and Hypotheses
-==========================
-
-The spread of the COVID-19 pandemic has led to limitations to movement in many countries and regions, either because of lock-down policies or self-censoring by segments of the public. The magnitude of changes in mobility has been studied by recent research, including @DeWeese2020tale and @Molloy2020tracing. While the evidence available indicates that although the overall mobility has reduced in much  of the world, the changes were uneven depending on the mode of transportation or the purpose of the trip [see @Lock2020cycling; @Paez2020using]. Unfortunately, with few exceptions, evidence remains more spotty for developing countries, most of which have large population segments that are less able to absorb losses in mobility [e.g., @Astroza2020mobility; @Huynh2020culture; @Saha2020lockdown]. 
-
-The objective of this paper is to investigate changes in the trip-making frequency by different modes of transportation during the COVID-19 emergency in Bangladesh. Using data from a recent survey that asked respondents to report mobility levels before and during the pandemic, we pose the following questions:
-
-- Was there a reduction of mobility in Bangladesh during COVID-19?
-- And if so, what forms of transportation were more affected?
-
-This paper is a reproducible research document [see @Brunsdon2020opening]; the code and data necessary to replicate the tables and figures are available in a public repository\footnote{\url{place.holder}}
-
-Methods and Data
-============
-
-Data used for this paper come from an online survey, "Exploring the potential of travel mode change behavior in the post-lockdown and post-pandemic (COVID-19) period" conducted during July - August 2020 in Bangladesh. The survey was available both in Bengali and English and disseminated through various electronic means along with a widespread social media campaign and promotion in various social media sites and groups. Including socio-economic characteristics, the survey covered different aspects of travel such as travel behavior before and during COVID-19, knowledge related to COVID-19, and opinions and perceptions regarding travel behavior after lockdown and post-pandemic situation.
-
-The survey asked respondents to self-report their trip-making frequency by eight modes of transportation, namely **car**, **ridesharing** (e.g., Uber, Pathao), **rickshaw**, **CNG auto-rickshaw** (a rickshaw-like vehicle powered by compressed natural gas), **bus**, motorcycle/scooter (hereafter just **motorcycle**), **walking**, and **bicycle** (there was an additional catch-all category **other** which we ignore here). Participants in the survey used the following levels to report their frequency of traveling by each mode both before and during COVID-19: _Never_, _Rarely_, _Once a week_, _2-3 trips per week_, _4-5 trips per week_, _Almost daily_. There are $n=800$ responses in the data set.
-
-To describe changes in travel frequency by mode in the transition to the pandemic, we use well-established exploratory data analysis (EDA) techniques.
-
-Findings
-===================
-
-Figure \ref{fig:column-plot-cases} shows the number of responses (out of 800) in each trip-making frequency class by mode of transportation. The white bars and gray bars are for travel before and during the pandemic, respectively. Considering travel before the pandemic, travel by rickshaw, and bus were relatively common for many respondents (few respondents reported _never_ using these modes). The mode most commonly used on a quotidian basis was walk. In contrast, respondents reported less frequent travel by car, ridesharing services, CNG auto-rickshaw, motorcycle, and bicycle. During the pandemic, we see that while there were reductions in mobility by car, motorcycle, and bicycle (with more respondents reporting never traveling by these modes), the changes were relatively minor. The frequency of trip-making by other modes changed more noticeably: the frequency of travel by ridesharing services, rickshaw, CNG auto-rickshaw, and bus collapsed, with vastly more respondents reporting never using these modes during the pandemic than before. The frequency of walking trips also decreased (fewer respondents report walking almost daily), but the reductions in mobility were not so heavily concentrated at the bottom of the scale. 
-
-```{r column-plot-cases-before-after, fig.height=6, echo=FALSE, fig.cap="\\label{fig:column-plot-cases}Number of responses by trip-making frequency class and mode, before and during COVID-19"}
-freq_by_mode_long %>%
-  filter(Mode != "other") %>%
-  ggplot(aes(x = frequency, y = Cases, fill = Period)) +
-  geom_col(color = "black", position = "dodge") + 
-  scale_fill_manual(values = c("before" = "white", "during" = "gray")) +
-  theme_minimal() +
-  theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 90)) +
-  facet_wrap(. ~ Mode, nrow = 4)
-```
-
-Table \ref{tab:cross-tabulation} is a cross-tabulation of the number of cases in each trip-making frequency class before and during the pandemic. If no changes had occurred, all values would be concentrated on the main diagonal of the matrices. Values in the lower triangular matrix represent a _loss_ of mobility (lower travel frequency), whereas values in the upper triangular matrix are _gains_ (higher travel frequency). The further away a value is from the main diagonal, the greater the loss or gain. 
-
-Despite across-the-board losses of mobility, there appears to have been some adaptation that varied by mode of transportation. To illustrate, `r bus_xtab[6, 1]` respondents, or `r paste(round(bus_xtab[6, 1] / sum(bus_xtab[6,]) * 100, 2), "%", sep="")` of those who traveled by bus almost daily before, reported never using it during the pandemic. In contrast, only `r sum(bus_xtab[1, 2:6])` respondents, or `r paste(round(sum(bus_xtab[1, 2:6]) / sum(bus_xtab[,]) * 100, 2), "%", sep="")` of those who never used buses before started doing so during the pandemic. By way of comparison, `r paste(round(bicycle_xtab[6, 1] / sum(bicycle_xtab[6,]) * 100, 2), "%", sep="")` of respondents who cycled almost daily before the pandemic stopped doing so - but `r paste(round(sum(bicycle_xtab[1, 2:6]) / sum(bicycle_xtab[,]) * 100, 2), "%", sep="")` who never cycled before started doing so during the pandemic.
-
-```{r table-transitions, echo=FALSE}
-rbind(car_xtab, 
-      rideshare_xtab,
-      rickshaw_xtab, 
-      cng_xtab,
-      bus_xtab, 
-      motorcycle_xtab,
-      walk_xtab,
-      bicycle_xtab) %>%
-  kable("latex",
-        booktabs = TRUE,
-        caption = "\\label{tab:cross-tabulation} Cross-tabulation of counts of travel frequency by mode, before and during COVID-19") %>%
-  kable_styling(latex_options = c("scale_down")) %>%
-  pack_rows("car", 1, 6) %>%
-  pack_rows("rideshare", 7, 12) %>%
-  pack_rows("rickshaw", 13, 18) %>%
-  pack_rows("cng auto-rickshaw", 19, 24) %>%
-  pack_rows("bus", 25, 30) %>%
-  pack_rows("motorcycle", 31, 36) %>%
-  pack_rows("walk", 37, 42) %>%
-  pack_rows("bicycle", 43, 48)
-```
-
-To more clearly understand the transitions towards different trip-making frequencies, including possible adaptations, we convert the cross-tabulations to probability transition matrices, which we then visualize using circular plots. 
-
-Figures \ref{fig:circular-plot-1} to \ref{fig:circular-plot-4} present these plots. Each of the trip-making frequency sectors on the left hemisphere of the circle represents 100% of responses _before_ the pandemic. The links' size is proportional to the probability $p_{ij}$ of transitioning from frequency class $i$ before to the right hemisphere are proportional to the transition probabilities to each frequency _during_ the pandemic. There are three transparency levels for the links: solid colors are for $p_{ij}>2/3$, intermediate transparency is for $1/3 < p_{ij} \le 2/3$, and the more transparent links are for $p_{ij}\le 1/3$.
-
-From Figure \ref{fig:circular-plot-1}, we see that the probability of traveling less frequently for those who frequently traveled by car before is high, but their probability of not using this mode at all during the pandemic is quite small. The probability of traveling more frequently by car for those who originally never or rarely used this mode remained is low. In contrast, we see that the probabilities of never ridesharing during the pandemic are high irrespective of the initial level of use of this mode of transportation. 
-
-The probabilities of change in trip frequency by rickshaw and CNG auto-rickshaw are similar (see Figure \ref{fig:circular-plot-2}), although the probabilities of being less mobile by CNG auto-rickshaw are greater: between 1/3 and 2/3 of respondents who used this mode almost daily, stopped using it during the pandemic. Very rarely there was an increase in mobility by these modes.
-
-After rideshare users, bus users (Figure \ref{fig:circular-plot-3}) were the most likely to stop using it, irrespective of their initial level of use of this mode, while the probabilities of using it _more_ frequently are extremely small. 
-
 ```{r reorder-probability-transition-matrices, include=FALSE}
 # For visualization purposes using `circlize`, I want to reverse the order of the columns of the table of proportions. In this way, "Never" and "Never" are adjacent, and "Almost daily" and "Almost daily" are also adjacent in the circular plot:
 
@@ -376,16 +305,32 @@ state_col <- c("Never" = "#2C3E50",
                "Almost daily" = "#C0392B")
 
 # one for rows and one for columns
-state_col2 <- c(state_col, rev(state_col))
-names(state_col2) <- c(rownames(bicycle_ptab2), colnames(bicycle_ptab2))
+state_col2 <- c(state_col, 
+                rev(state_col))
+names(state_col2) <- c(rownames(bicycle_ptab2), 
+                       colnames(bicycle_ptab2))
 
-colmat <- rep(state_col2[rownames(bicycle_ptab2)], n_states)
-colmat <- rgb(t(col2rgb(colmat)), maxColorValue = 255)
+colmat <- rep(state_col2[rownames(bicycle_ptab2)], 
+              n_states)
+colmat <- rgb(t(col2rgb(colmat)), 
+              maxColorValue = 255)
 ```
 
 ```{r grouping-variable-for-period, include=FALSE}
 #Create a grouping variable for the chord diagram, so that sectors are grouped by their state as before and during:
-group = structure(c("Before", "Before", "Before", "Before", "Before", "Before", "During", "During", "During", "During", "During", "During"), names = names(state_col2))
+group = structure(c("Before", 
+                    "Before", 
+                    "Before", 
+                    "Before", 
+                    "Before", 
+                    "Before", 
+                    "During", 
+                    "During", 
+                    "During", 
+                    "During", 
+                    "During", 
+                    "During"),
+                  names = names(state_col2))
 ```
 
 ```{r function-for-circular-plots, include=FALSE}
@@ -396,7 +341,8 @@ circle.plot <- function(ptab2 = ptab2, mode.title = "mode", nlines = 0){
   circos.par(start.degree = 270, 
              points.overflow.warning = FALSE,
              track.height = 0.2)
-  circos.initialize(factors = factors, xlim = c(0, 1))
+  circos.initialize(factors = factors, 
+                    xlim = c(0, 1))
   circos.track(ylim = c(0, 1), 
                panel.fun = function(x, y) {
                  circos.text(CELL_META$xcenter, 
@@ -407,7 +353,8 @@ circle.plot <- function(ptab2 = ptab2, mode.title = "mode", nlines = 0){
                              niceFacing = FALSE)
                })
   
-  title(paste0("Frequency of travel by ", mode.title, sep = ""),
+  title(paste0("Frequency of travel by ", 
+               mode.title, sep = ""),
         line = nlines,
         cex.main = 0.8)
   
@@ -468,7 +415,81 @@ circle.plot <- function(ptab2 = ptab2, mode.title = "mode", nlines = 0){
 circle.plot(bus_ptab2, "bus")
 ```
 
+Research Questions and Hypotheses
+==========================
+
+The spread of the COVID-19 pandemic has led to limitations to movement in many countries and regions, either because of lock-down policies or self-censoring by segments of the public. The magnitude of changes in mobility has been studied by recent research, including @DeWeese2020tale and @Molloy2020tracing. While the evidence available indicates that although the overall mobility has reduced in much  of the world, the changes were uneven depending on the mode of transportation or the purpose of the trip [see @Lock2020cycling; @Paez2020using]. Unfortunately, with few exceptions, evidence remains more spotty for developing countries, most of which have large population segments that are less able to absorb losses in mobility [e.g., @Astroza2020mobility; @Huynh2020culture; @Saha2020lockdown]. 
+
+The objective of this paper is to investigate changes in the trip-making frequency by different modes of transportation during the COVID-19 emergency in Bangladesh. Using data from a recent survey that asked respondents to report mobility levels before and during the pandemic, we pose the following questions:
+
+- Was there a reduction of mobility in Bangladesh during COVID-19?
+- And if so, what forms of transportation were more affected?
+
+This paper is a reproducible research document [see @Brunsdon2020opening]; the code and data necessary to reproduce the tables and figures are available in a public repository\footnote{\url{https://github.com/paezha/Frequency-of-Travel-by-Mode-COVID-19-Bangladesh}}
+
+Methods and Data
+============
+
+Data used for this paper come from an online survey, "Exploring the potential of travel mode change behavior in the post-lock-down and post-pandemic (COVID-19) period" conducted during July - August 2020 in Bangladesh. The survey was available both in Bengali and English and disseminated through various electronic means along with a widespread social media campaign and promotion in various social media sites and groups. In addition to socio-economic and demographic information of the respondents, the survey covered different aspects of travel such as travel behavior before and during COVID-19, knowledge related to COVID-19, and opinions and perceptions regarding travel behavior after lock-down and post-pandemic situation.
+
+For the purpose of this paper, we use two questions that provide information about trip-making frequency by eight modes of transportation. The modes are **car**, **ridesharing** (e.g., Uber, Pathao), **rickshaw**, **CNG auto-rickshaw** (a rickshaw-like vehicle powered by compressed natural gas), **bus**, motorcycle/scooter (hereafter just **motorcycle**), **walking**, and **bicycle** (there was an additional catch-all category **other** which we ignore here). Participants in the survey used the following levels to report their frequency of traveling by each mode both before and during COVID-19: _Never_, _Rarely_, _Once a week_, _2-3 trips per week_, _4-5 trips per week_, _Almost daily_. There are $n=800$ responses in the data set.
+
+To describe changes in travel frequency by mode in the transition to the pandemic, we use well-established exploratory data analysis (EDA) techniques.
+
+Findings
+===================
+
+Figure \ref{fig:column-plot-cases} shows the number of responses (out of 800) in each trip-making frequency class by mode of transportation. The white bars and gray bars are for travel before and during the pandemic, respectively. Considering travel before the pandemic, travel by rickshaw, and bus were relatively common for many respondents (few respondents reported _never_ using these modes). The mode most commonly used on a quotidian basis was walk. In contrast, respondents reported less frequent travel by car, ridesharing services, CNG auto-rickshaw, motorcycle, and bicycle. During the pandemic, we see that while there were reductions in mobility by car, motorcycle, and bicycle (with more respondents reporting never traveling by these modes), the changes were relatively minor. 
+
+```{r column-plot-cases-before-after, echo=FALSE, fig.width= 5, fig.cap="\\label{fig:column-plot-cases}Number of responses by trip-making frequency class and mode, before and during COVID-19"}
+freq_by_mode_long %>%
+  filter(Mode != "other") %>%
+  ggplot(aes(x = frequency, y = Cases, fill = Period)) +
+  geom_col(color = "black", position = "dodge") + 
+  scale_fill_manual(values = c("before" = "white", "during" = "gray")) +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 90)) +
+  facet_wrap(. ~ Mode, nrow = 4)
+```
+
+```{r table-transitions, echo=FALSE}
+rbind(car_xtab, 
+      rideshare_xtab,
+      rickshaw_xtab, 
+      cng_xtab,
+      bus_xtab, 
+      motorcycle_xtab,
+      walk_xtab,
+      bicycle_xtab) %>%
+  kable("latex",
+        booktabs = TRUE,
+        caption = "\\label{tab:cross-tabulation} Cross-tabulation of counts of travel frequency by mode, before and during COVID-19") %>%
+  kable_styling(latex_options = c("scale_down", "HOLD_position")) %>%
+  pack_rows("car", 1, 6) %>%
+  pack_rows("rideshare", 7, 12) %>%
+  pack_rows("rickshaw", 13, 18) %>%
+  pack_rows("CNG auto-rickshaw", 19, 24) %>%
+  pack_rows("bus", 25, 30) %>%
+  pack_rows("motorcycle", 31, 36) %>%
+  pack_rows("walk", 37, 42) %>%
+  pack_rows("bicycle", 43, 48)
+```
+
+The frequency of trip-making by other modes changed more noticeably: the frequency of travel by ridesharing services, rickshaw, CNG auto-rickshaw, and bus collapsed, with vastly more respondents reporting never using these modes during the pandemic than before. The frequency of walking trips also decreased (fewer respondents report walking almost daily), but the reductions in mobility were not so heavily concentrated at the bottom of the scale.
+
+Table \ref{tab:cross-tabulation} is a cross-tabulation of the number of cases in each trip-making frequency class before and during the pandemic. If no changes had occurred, all values would be concentrated on the main diagonal of the matrices. Values in the lower triangular matrix represent a _loss_ of mobility (lower travel frequency), whereas values in the upper triangular matrix are _gains_ (higher travel frequency). The further away a value is from the main diagonal, the greater the loss or gain. 
+
+Despite across-the-board losses of mobility, there appears to have been some adaptation that varied by mode of transportation. To illustrate, `r bus_xtab[6, 1]` respondents, or `r paste(round(bus_xtab[6, 1] / sum(bus_xtab[6,]) * 100, 2), "%", sep="")` of those who traveled by bus almost daily before, reported never using it during the pandemic. In contrast, only `r sum(bus_xtab[1, 2:6])` respondents, or `r paste(round(sum(bus_xtab[1, 2:6]) / sum(bus_xtab[,]) * 100, 2), "%", sep="")` of those who never used buses before started doing so during the pandemic. By way of comparison, `r paste(round(bicycle_xtab[6, 1] / sum(bicycle_xtab[6,]) * 100, 2), "%", sep="")` of respondents who cycled almost daily before the pandemic stopped doing so - but `r paste(round(sum(bicycle_xtab[1, 2:6]) / sum(bicycle_xtab[,]) * 100, 2), "%", sep="")` who never cycled before started doing so during the pandemic.
+
+To more clearly understand the transitions towards different trip-making frequencies, including possible adaptations, we convert the cross-tabulations to probability transition matrices, which we then visualize using circular plots. 
+
+Figures \ref{fig:circular-plot-1} to \ref{fig:circular-plot-4} present these plots. Each of the trip-making frequency sectors on the left hemisphere of the circle represents 100% of responses _before_ the pandemic. The links' size is proportional to the probability $p_{ij}$ of transitioning from frequency class $i$ before to the right hemisphere are proportional to the transition probabilities to each frequency _during_ the pandemic. There are three transparency levels for the links: solid colors are for $p_{ij}>2/3$, intermediate transparency is for $1/3 < p_{ij} \le 2/3$, and the more transparent links are for $p_{ij}\le 1/3$.
+
+From Figure \ref{fig:circular-plot-1}, we see that the probability of traveling less by car for those who initially used this mode frequently is high, but their probability of not using this mode at all during the pandemic is quite small. In other words, there was a decline in use, but not complete discontinuation of this mode. The probability of traveling more frequently by car for those who originally never or rarely used this mode remained is low. In contrast, we see that the probabilities of never ridesharing during the pandemic are high irrespective of the initial level of use of this mode of transportation, and the probability of using this mode more are fairly small.
+
 ```{r circular-plots-transition-probabilities-1, echo = FALSE, fig.cap="\\label{fig:circular-plot-1}Transition probabilities in trip frequency from before to during COVID-19: car and rideshare"}
+
 # Rows and columns to arrange several circular plots
 par(mfrow = c(1, 2),
     mar = c(0, 0, 0, 0),
@@ -481,6 +502,8 @@ circle.plot(car_ptab2, "car", nlines = -3)
 circle.plot(rideshare_ptab2, "rideshare", nlines = -3)
 ```
 
+The probabilities of change in trip frequency by rickshaw and CNG auto-rickshaw are similar (see Figure \ref{fig:circular-plot-2}), although the probabilities of being less mobile by CNG auto-rickshaw are greater: between 1/3 and 2/3 of respondents who used this mode almost daily, stopped using it during the pandemic. Very rarely there were increases in mobility by these modes.
+
 ```{r circular-plots-transition-probabilities-2, echo = FALSE, fig.cap="\\label{fig:circular-plot-2}Transition probabilities in trip frequency from before to during COVID-19: rickshaw and cng auto-rickshaw"}
 # Rows and columns to arrange several circular plots
 par(mfrow = c(1, 2),
@@ -491,8 +514,10 @@ par(mfrow = c(1, 2),
 circle.plot(rickshaw_ptab2, "rickshaw", nlines = -3)
 
 # CNG
-circle.plot(cng_ptab2, "cng auto-rickshaw", nlines = -3)
+circle.plot(cng_ptab2, "CNG auto-rickshaw", nlines = -3)
 ```
+
+After rideshare, the use of bus had the largest probabilities of discontinuation (Figure \ref{fig:circular-plot-3}). We see that even respondents who used this mode almost daily before the pandemic had close to 66% chances of never using it during the contingency. Similarly large losses of mobility by bus were observed for travelers who used this mode less frequently before the pandemic. These losses were not offset to any appreciable degree by the probability of some users turning to this mode during the pandemic.
 
 ```{r circular-plots-transition-probabilities-3, echo = FALSE, fig.cap="\\label{fig:circular-plot-3}Transition probabilities in trip frequency from before to during COVID-19: motorcycle and bus"}
 # Rows and columns to arrange several circular plots
@@ -507,6 +532,8 @@ circle.plot(bus_ptab2, "bus", nlines = -3)
 circle.plot(motorcycle_ptab2, "motorcycle", nlines = -3)
 ```
 
+Trip-making by motorcycle (Figure \ref{fig:circular-plot-3}) also declined for all but the most frequent users pre-COVID-19, and the probability of adopting this mode during COVID-19 was almost null. Contrast this to the case of walking (Figure \ref{fig:circular-plot-4}), where a sizable number of respondents started walking during the pandemic, even if only rarely. Close to 50% of respondents who report walking almost daily during the pandemic walked less frequently before the contingency. Bicycle (Figure \ref{fig:circular-plot-4}), like motorcycle, saw relatively fewer respondents adopting it during the pandemic, and many travelers who did use the mode rarely, once a week, or even 2-3 times per week stopped cycling during the pandemic.
+
 ```{r circular-plots-transition-probabilities-4, echo = FALSE, fig.cap="\\label{fig:circular-plot-4}Transition probabilities in trip frequency from before to during COVID-19: bicycle and walk"}
 # Rows and columns to arrange several circular plots
 par(mfrow = c(1, 2),
@@ -519,6 +546,8 @@ circle.plot(walk_ptab2, "walk", nlines = -3)
 # BICYCLE
 circle.plot(bicycle_ptab2, "bicycle", nlines = -3)
 ```
+
+The findings reported here provide important changes in mobility in a developing country during COVID-19. In general there was a loss of mobility across-the-board, but modes that require interaction with strangers (rideshare, bus, rickshaw, and CNG auto-rickshaw) were more affected. Travel by car, motorcycle, and bicycle were somewhat less affected, and there is evidence of some adoption of walking during the pandemic.
 
 References {#references .unnumbered}
 ==========
