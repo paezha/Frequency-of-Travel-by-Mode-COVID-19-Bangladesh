@@ -1,35 +1,44 @@
 ---
-title: Changes in trip-making frequency by mode during the COVID-19 emergency in Bangladesh
-author:
-  - name: Shaila Jamal
-    email: jamals16@mcmaster.ca
-    affiliation: McMaster University
-  - name: Antonio Paez
-    email: paezha@mcmaster.ca
-    affiliation: McMaster University
-    footnote: 1
-address:
-  - code: McMaster University
-    address: School of Earth, Environment and Society, McMaster University, Hamilton, ON, L8S 4K1, Canada
-footnote:
-  - code: 1
-    text: "Corresponding Author"
-abstract: |
- The COVID-19 pandemic has had a profound impact on mobility in every country and region around the world. Recent helps to illuminate some of the dimensions of change - however, the evidence is still scant in developing countries. The objective of this paper is to present an exploratory analysis of the changes in the frequency of trip-making by mode during the COVID-19 emergency in Bangladesh. The results confirm an overall loss of mobility in the form of reduced trip-making frequency by all modes, but the changes are not uniform across modes. In particular, there was a greater loss of mobility for bus, rickshaw, and CNG auto-rickshaw, and some adoption of walking during the pandemic.
-
-journal: "Transport Findings"
-date: "`r Sys.Date()`"
-bibliography: References.bib
-#linenumbers: true
-#numbersections: true
-csl: elsevier-harvard.csl
-output: rticles::elsevier_article
+output: github_document
 always_allow_html: true
-
-header-includes:
- \usepackage{float}
- \floatplacement{figure}{H}
+bibliography: Frequency-of-Travel-by-Mode-COVID-19-Bangladesh/References.bib
 ---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Changes in trip-making frequency by mode during the COVID-19 emergency in Bangladesh
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Shaila Jamal (jamals16@mcmaster.ca)  
+Antonio Paez (paezha@mcmaster.ca)  
+School of Geography and Earth Science  
+McMaster University  
+1280 Main Street West, Hamilton, ON L8S 4K1  
+Canada  
+  
+Paper submitted for peer review to Transport Findings
+
+## Abstract
+
+The COVID-19 pandemic has had a profound impact on mobility in every country and region around the world. Recent helps to illuminate some of the dimensions of change - however, the evidence is still scant in developing countries. The objective of this paper is to present an exploratory analysis of the changes in the frequency of trip-making by mode during the COVID-19 emergency in Bangladesh. The results confirm an overall loss of mobility in the form of reduced trip-making frequency by all modes, but the changes are not uniform across modes. In particular, there was a greater loss of mobility for bus, rickshaw, and CNG auto-rickshaw, and some adoption of walking during the pandemic.
+
+## Keywords
+
+- COVID-19
+- Mobility
+- Trip-making frequency
+- Modes of transportation
+- Transition probabilities
+- Circular plots
 
 ```{r load-packages, include=FALSE}
 #Load the packages needed to read and work with the data
@@ -42,200 +51,8 @@ library(readr)
 library(tidyverse)
 ```
 
-```{r read-data, include=FALSE, eval=FALSE}
-# NOT RUN - THE DATA FILES ARE IN PRIVATE DIRECTORY. INCLUDED ONLY FOR TRANSPARENCY OF DATA PREPARATION
-
-# Read data file, add unique respondent identifier:
-mcb <- read_csv("Combined-data-final-with-serial-number.csv") %>% 
-  rename(id = `Serial no.`,
-         yob = `24.	Please enter your year of birth (e.g. 1990, 1999)`)
-```
-
-```{r convert-to-factors-and-clean, include=FALSE, eval=FALSE}
-# NOT RUN - THE DATA FILES ARE IN PRIVATE DIRECTORY. INCLUDED ONLY FOR TRANSPARENCY OF DATA PREPARATION
-
-# Extract relevant variables and convert to factors as appropriate. A small number of records (4) are deleted because they contain nonsensical year of birth responses 
-freq_by_mode <- mcb %>%
-  mutate(id = c(1:nrow(mcb)),
-         age = 2020 - yob) %>%
-  filter(age > 0 & age < 100) %>%
-  transmute(id,
-            freq_car_before = factor(.[[20]]),
-            freq_bus_before = factor(.[[21]]),
-            freq_rickshaw_before = factor(.[[22]]),
-            freq_cng_before = factor(.[[23]]),
-            freq_walk_before = factor(.[[24]]),
-            freq_motorcycle_before = factor(.[[25]]),
-            freq_bicycle_before = factor(.[[26]]),
-            freq_rideshare_before = factor(.[[27]]),
-            freq_other_before = factor(.[[28]]),
-            freq_car_during = factor(.[[29]]),
-            freq_bus_during = factor(.[[30]]),
-            freq_rickshaw_during = factor(.[[31]]),
-            freq_cng_during = factor(.[[32]]),
-            freq_walk_during = factor(.[[33]]),
-            freq_motorcycle_during = factor(.[[34]]),
-            freq_bicycle_during = factor(.[[35]]),
-            freq_rideshare_during = factor(.[[36]]),
-            freq_other_during = factor(.[[37]]))
-```
-
-```{r frequency-table-pivot-long, include=FALSE, eval=FALSE}
-# NOT RUN - THE DATA FILES ARE IN PRIVATE DIRECTORY. INCLUDED ONLY FOR TRANSPARENCY OF DATA PREPARATION
-
-# Pivot table to long: each row is a respondent-mode-period response
-freq_by_mode_long <- freq_by_mode %>%
-  pivot_longer(cols = starts_with("freq_"),
-               names_to = "mode_period",
-               names_prefix = "freq_",
-               values_to = "frequency") %>%
-  separate(mode_period, c("Mode", "Period")) %>%
-  transmute(id,
-            Period = factor(Period,
-                            levels = c("before", "during")), 
-            Mode = factor(Mode,
-                          levels = c("car",
-                                     "motorcycle",
-                                     "rideshare",
-                                     "rickshaw",
-                                     "cng",
-                                     "bus",
-                                     "walk",
-                                     "bicycle",
-                                     "other")), 
-            frequency = factor(frequency, 
-                               levels = c("Never",
-                                          "Rarely",
-                                          "At least once a week",
-                                          "2-3 times a week",
-                                          "4-5 times a week",
-                                          "Almost everyday"),
-                               labels = c("Never",
-                                          "Rarely",
-                                          "Once a week",
-                                          "2-3 per week",
-                                          "4-5 per week",
-                                          "Almost daily"),
-                               ordered = TRUE))
-```
-
-```{r frequency-table-pivot-wide, include=FALSE, eval=FALSE}
-# NOT RUN - THE DATA FILES ARE IN PRIVATE DIRECTORY. INCLUDED ONLY FOR TRANSPARENCY OF DATA PREPARATION
-
-# Pivot the table to wide: each row is a respondent
-freq_by_mode <- freq_by_mode_long %>%
-  pivot_wider(names_from = c("Mode", "Period"),
-              names_sep = "_",
-              names_prefix = "freq_",
-              values_from = "frequency")
-```
-
-```{r summarize-frequency, include=FALSE, eval=FALSE}
-# NOT RUN - THE DATA FILES ARE IN PRIVATE DIRECTORY. INCLUDED ONLY FOR TRANSPARENCY OF DATA PREPARATION
-
-# Summarize cases by period and mode
-freq_by_mode_long <- freq_by_mode_long %>% 
-  group_by(Period, Mode, frequency) %>%
-  summarize(Cases = n())
-```
-
-```{r probability-transitions, include=FALSE, eval=FALSE}
-# NOT RUN - THE DATA FILES ARE IN PRIVATE DIRECTORY. INCLUDED ONLY FOR TRANSPARENCY OF DATA PREPARATION
-
-# Create cross-tabulations and tables of proportions by mode. The cross-tabulation is of the number of cases by period (before COVID-19 and during):
-
-# CAR
-car_xtab <- xtabs(~ freq_car_before + freq_car_during, 
-                  data = freq_by_mode) 
-
-car_ptab <- car_xtab %>%
-  prop.table(1)
-
-# MOTORCYCLE
-motorcycle_xtab <- xtabs(~ freq_motorcycle_before + freq_motorcycle_during, 
-                         data = freq_by_mode) 
-
-motorcycle_ptab <- motorcycle_xtab %>%
-  prop.table(1)
-
-# RIDESHARE
-rideshare_xtab <- xtabs(~ freq_rideshare_before + freq_rideshare_during, 
-                        data = freq_by_mode) 
-
-rideshare_ptab <- rideshare_xtab %>%
-  prop.table(1)
-
-# RICKSHAW
-rickshaw_xtab <- xtabs(~ freq_rickshaw_before + freq_rickshaw_during, 
-                       data = freq_by_mode) 
-
-rickshaw_ptab <- rickshaw_xtab %>%
-  prop.table(1)
-
-# cng
-cng_xtab <- xtabs(~ freq_cng_before + freq_cng_during, 
-                  data = freq_by_mode) 
-
-cng_ptab <- cng_xtab %>%
-  prop.table(1)
-
-# BUS
-bus_xtab <- xtabs(~ freq_bus_before + freq_bus_during, 
-                  data = freq_by_mode) 
-
-bus_ptab <- bus_xtab %>%
-  prop.table(1)
-
-# WALK
-walk_xtab <- xtabs(~ freq_walk_before + freq_walk_during, 
-                   data = freq_by_mode) 
-
-walk_ptab <- walk_xtab %>%
-  prop.table(1)
-
-# BICYCLE
-bicycle_xtab <- xtabs(~ freq_bicycle_before + freq_bicycle_during, 
-                      data = freq_by_mode) 
-
-bicycle_ptab <- bicycle_xtab %>%
-  prop.table(1)
-
-# OTHER
-other_xtab <- xtabs(~ freq_other_before + freq_other_during, 
-                    data = freq_by_mode) 
-
-other_ptab <- other_xtab %>%
-  prop.table(1)
-```
-
-```{r save-data, include=FALSE, eval=FALSE}
-# NOT RUN - THE DATA FILES ARE IN PRIVATE DIRECTORY. INCLUDED ONLY FOR TRANSPARENCY OF DATA PREPARATION
-
-# Save data objects
-save(freq_by_mode_long, 
-     car_xtab, 
-     car_ptab, 
-     motorcycle_xtab, 
-     motorcycle_ptab, 
-     rideshare_xtab, 
-     rideshare_ptab, 
-     rickshaw_xtab, 
-     rickshaw_ptab, 
-     cng_xtab, 
-     cng_ptab, 
-     bus_xtab, 
-     bus_ptab, 
-     walk_xtab, 
-     walk_ptab, 
-     bicycle_xtab, 
-     bicycle_ptab, 
-     other_xtab, 
-     other_ptab,
-     file = "Trip-Frequency-Bangladesh.RData")
-```
-
 ```{r load-data-file, include=FALSE}
-load("Trip-Frequency-Bangladesh.RData")
+load("Frequency-of-Travel-by-Mode-COVID-19-Bangladesh/Trip-Frequency-Bangladesh.RData")
 ```
 
 ```{r reorder-probability-transition-matrices, include=FALSE}
@@ -480,7 +297,7 @@ The frequency of trip-making by other modes changed more noticeably: the frequen
 
 Table \ref{tab:cross-tabulation} is a cross-tabulation of the number of cases in each trip-making frequency class before and during the pandemic. If no changes had occurred, all values would be concentrated on the main diagonal of the matrices. Values in the lower triangular matrix represent a _loss_ of mobility (lower travel frequency), whereas values in the upper triangular matrix are _gains_ (higher travel frequency). The further away a value is from the main diagonal, the greater the loss or gain. 
 
-Despite across-the-board losses of mobility, there appears to have been some adaptation that varied by mode of transportation. To illustrate, `r bus_xtab[6, 1]` respondents, or `r paste(round(bus_xtab[6, 1] / sum(bus_xtab[6,]) * 100, 2), "%", sep="")` of those who traveled by bus almost daily before, reported never using it during the pandemic. In contrast, only `r sum(bus_xtab[1, 2:6])` respondents, or `r paste(round(sum(bus_xtab[1, 2:6]) / sum(bus_xtab[,]) * 100, 2), "%", sep="")` of those who never used buses before started doing so during the pandemic. By way of comparison, `r paste(round(bicycle_xtab[6, 1] / sum(bicycle_xtab[6,]) * 100, 2), "%", sep="")` of respondents who cycled almost daily before the pandemic stopped doing so - but `r paste(round(sum(bicycle_xtab[1, 2:6]) / sum(bicycle_xtab[,]) * 100, 2), "%", sep="")` who never cycled before started doing so during the pandemic.
+Despite across-the-board losses of mobility, there appears to have been some adaptation that varied by mode of transportation. To illustrate, `r bus_xtab[6, 1]` respondents, or `r paste(round(bus_xtab[6, 1] / sum(bus_xtab[6,]) * 100, 2), "%", sep="")` of those who traveled by bus almost daily before, reported never using it during the pandemic. In contrast, only `r sum(bus_xtab[1, 2:6])` respondents, or `r paste(round(sum(bus_xtab[1, 2:6]) / sum(bus_xtab[,]) * 100, 2), "%", sep="")` of those who never used buses before started doing so during the pandemic. By way of comparison, `r paste(round(bicycle_xtab[6, 1] / sum(bicycle_xtab[6,]) * 100, 2), "%", sep="")` of respondents who cycled almost daily before the pandemic stopped doing so, but `r paste(round(sum(bicycle_xtab[1, 2:6]) / sum(bicycle_xtab[,]) * 100, 2), "%", sep="")` who never cycled before started doing so during the pandemic.
 
 To more clearly understand the transitions towards different trip-making frequencies, including possible adaptations, we convert the cross-tabulations to probability transition matrices, which we then visualize using circular plots. 
 
