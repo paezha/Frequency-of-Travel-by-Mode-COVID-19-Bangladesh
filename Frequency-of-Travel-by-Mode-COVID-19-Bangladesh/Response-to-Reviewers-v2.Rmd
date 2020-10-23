@@ -29,7 +29,11 @@ The paper presents an exploratory analysis of online survey results by 800 respo
 
 - Bangladesh has very high density urban areas, it would be good to include a discussion on whether the online survey responses indicated which cities the respondents are from - what was the geography of the answers? While 800 is a decent number, the volume is still a small number when compared as a sample against full populations, further, different cities have different transit arrangements, and since the shared and transit modes seem most affected - a discussion of geography somewhere (which principal cities and their attributes) will enrich the discussion, and also as mentioned a discussion of the limitations of the sample size being still relatively small.
 
-\textcolor{blue}{Words go here.}
+\textcolor{blue}{Thanks for asking this question. We clarified this in the third and fourth paragraph of section 'Methods and Data'. 
+
+Here is what we included: Looking into the dataset, we can see that more than 80% of the sample belongs to the 16-30 years age group whereas 37% of the country's population belongs to this group @bangladesh2015. 66% of the respondents are male and 32% are females compared to country's 49:51 male-female ratio @bangladesh2015. This is expected in terms of online surveys as young adults are more familiar with the online platforms, specially in the developing country context. Online surveys usually don't offer representative samples compared to face-to-face survey, rather a convenient sample @fricker2002advantages. However, considering the country-wide lock-down situation, the required physical distancing recommendation and relevant health regulations, we decided to conduct an online survey which is still better than having no data on travel behavior during COVID - 19 in Bangladesh. Also, in case of Bangladesh, collecting a representative sample even through face-to-face survey is very difficult because of overall reluctance in participation from public, along with women's strong unwillingness to share their information to unknown parties [see @jamal2020perceptions for more details]. In terms of household's monthly income, 20% belongs to households with less than BDT 20,000, 25% belongs to BDT 20,000 - 39,999 and 22% belongs to BDT 40,000 - 59,999 income. [1 USD = 85 BDT]
+
+In terms of geography, we asked respondents to mention the name of the district they reside. 48% of the respondents live in Dhaka. Although, there are some differences in availability of transportation services between cities, especially between Dhaka and cities outside Dhaka, the mode use frequency indicates that only 15% never used buses and 32% never used ride-hailing services before COVID - 19, which means these modes were available to most of the respondents and a vast majority has used them to some extent before the lock-down (see Figure \ref{fig:column-plot-cases}). As the total population of the country is 160 million, compared to the overall population, sample size is still small which is a limitation of the study.}
 
 \newpage
 
@@ -39,13 +43,18 @@ The level of reliability of the conclusions critically depends on the reliabilit
 
 This is relevant because in the paper, from the title to the summary in the last paragraph, the authors claim they represent mobility changes in a developing country: Bangladesh, which has 160 million people (very small sample=800)
 
-\textcolor{blue}{Words go here.}
+\textcolor{blue}{Thank you for this comment. We clarified this in the third and fourth paragraph of section 'Methods and Data'. 
+Here is what we included: Looking into the dataset, we can see that more than 80% of the sample belongs to the 16-30 years age group whereas 37% of the country's population belongs to this group @bangladesh2015. 66% of the respondents are male and 32% are females compared to country's 49:51 male-female ratio @bangladesh2015. This is expected in terms of online surveys as young adults are more familiar with the online platforms, specially in the developing country context. Online surveys usually don't offer representative samples compared to face-to-face survey, rather a convenient sample @fricker2002advantages. However, considering the country-wide lock-down situation, the required physical distancing recommendation and relevant health regulations, we decided to conduct an online survey which is still better than having no data on travel behavior during COVID - 19 in Bangladesh. Also, in case of Bangladesh, collecting a representative sample even through face-to-face survey is very difficult because of overall reluctance in participation from public, along with women's strong unwillingness to share their information to unknown parties [see @jamal2020perceptions for more details]. In terms of household's monthly income, 20% belongs to households with less than BDT 20,000, 25% belongs to BDT 20,000 - 39,999 and 22% belongs to BDT 40,000 - 59,999 income. [1 USD = 85 BDT]
+
+In terms of geography, we asked respondents to mention the name of the district they reside. 48% of the respondents live in Dhaka. Although, there are some differences in availability of transportation services between cities, especially between Dhaka and cities outside Dhaka, the mode use frequency indicates that only 15% never used buses and 32% never used ride-hailing services before COVID - 19, which means these modes were available to most of the respondents and a vast majority has used them to some extent before the lock-down (see Figure \ref{fig:column-plot-cases}). As the total population of the country is 160 million, compared to the overall population, sample size is still small which is a limitation of the study.}
 
 Other comments:
 
 - No information of what contagion containment measures, if any, were in place during the time of the survey (e.g., lockdown, school closures)
 
-\textcolor{blue}{Words go here.}
+\textcolor{blue}{Thanks for this comment. The country was under partial lock-down during the survey period where essential services remained open, offices were running on rotation basis, all educational institutes were closed and public transport services were running at 50% capacity. 
+
+We included this information on the first paragraph of section 'Method and Data'}
 
 - Table 1: columns and rows need to indicate which one is pre and during COVID, it has to be added to the table.
 
