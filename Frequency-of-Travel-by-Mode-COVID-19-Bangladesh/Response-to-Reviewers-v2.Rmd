@@ -1,0 +1,56 @@
+---
+title: "Response to Reviewers"
+author: "Shaila Jamal and Antonio Paez"
+date: "5/11/2020"
+output: pdf_document
+---
+
+We wish to thank two anonymous reviewers for their comments and suggestions for revisions. In this letter we respond to those comments and explain how the paper was revised in response.
+
+\newpage
+
+# Reviewer 1
+
+The paper presents an exploratory analysis of online survey results by 800 respondents on changes to their trip making behaviours by mode during the COVD pandemic. It is a well written paper, and I recommend publication. Some minor edits and adds are suggested below.
+
+\textcolor{blue}{Thank you for your positive assessment and comments for improving the paper.}
+
+- Figure 1: Please lengthen the y-axes for all figures, at the moment, it is a bit hard to read results off, because the axes are squashed.
+
+\textcolor{blue}{Done. Hopefully the aspect of the figure will make it easier to read the results.}
+
+- Table 1: Please mark whether the rows are before and columns are during in the cross tabulation. It would be a good idea to use something like a conditional colouring so that each cell value is coloured by the scale of the value, so that the patterns discussed come out visually clear. At the moment, one has to read the numbers carefully.
+
+\textcolor{blue}{Rows and columns are now clearly labelled as "Before" and "During", respectively. We have also color-coded the cells by rows, to more easily see the patterns from before to during.}
+
+- Otherwise, overall the paper is well written and the results are clearly discussed.
+
+\textcolor{blue}{Thank you.}
+
+- Bangladesh has very high density urban areas, it would be good to include a discussion on whether the online survey responses indicated which cities the respondents are from - what was the geography of the answers? While 800 is a decent number, the volume is still a small number when compared as a sample against full populations, further, different cities have different transit arrangements, and since the shared and transit modes seem most affected - a discussion of geography somewhere (which principal cities and their attributes) will enrich the discussion, and also as mentioned a discussion of the limitations of the sample size being still relatively small.
+
+\textcolor{blue}{Words go here.}
+
+\newpage
+
+# Reviewer 2
+
+The level of reliability of the conclusions critically depends on the reliability of the sample, which is not analysed at all, i.e., there is no analysis of the level of representativeness of the sample relative to the Bangladesh population. A social media sample likely overrepresents high incomes, young age, etc. This must be scrutinized.
+
+This is relevant because in the paper, from the title to the summary in the last paragraph, the authors claim they represent mobility changes in a developing country: Bangladesh, which has 160 million people (very small sample=800)
+
+\textcolor{blue}{Words go here.}
+
+Other comments:
+
+- No information of what contagion containment measures, if any, were in place during the time of the survey (e.g., lockdown, school closures)
+
+\textcolor{blue}{Words go here.}
+
+- Table 1: columns and rows need to indicate which one is pre and during COVID, it has to be added to the table.
+
+\textcolor{blue}{Rows and columns are now clearly labelled as "Before" and "During", respectively. Also, we color-coded the cells by rows, after a comment by Reviewer 1.}
+
+- Uber is not ridesharing, it is ridesourcing or ride-hailing.
+
+\textcolor{blue}{This has been changed throughout the paper.}
