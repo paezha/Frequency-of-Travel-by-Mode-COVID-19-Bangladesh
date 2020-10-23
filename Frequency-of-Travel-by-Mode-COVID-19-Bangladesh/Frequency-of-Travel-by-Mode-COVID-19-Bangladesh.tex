@@ -44,7 +44,7 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={},
-            pdftitle={An exploratory analysis of changes in trip-making frequency by mode during the COVID-19 emergency in Bangladesh},
+            pdftitle={Changes in trip-making frequency by mode during the COVID-19 emergency in Bangladesh},
             colorlinks=false,
             urlcolor=blue,
             linkcolor=magenta,
@@ -57,7 +57,7 @@
 
 
 % Pandoc header
-\usepackage{float} \floatplacement{figure}{H}
+\usepackage{float} \usepackage{xcolor} \floatplacement{figure}{H}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -77,8 +77,8 @@
 \begin{document}
 \begin{frontmatter}
 
-  \title{An exploratory analysis of changes in trip-making frequency by mode
-during the COVID-19 emergency in Bangladesh}
+  \title{Changes in trip-making frequency by mode during the COVID-19 emergency
+in Bangladesh}
     \author[McMaster University]{Shaila Jamal}
    \ead{jamals16@mcmaster.ca} 
     \author[McMaster University]{Antonio Paez\corref{1}}
@@ -97,7 +97,7 @@ ON, L8S 4K1, Canada}
   overall loss of mobility in the form of reduced trip-making frequency by
   all modes, but the changes are not uniform across modes. In particular,
   there was a greater loss of mobility for bus, rickshaw, and CNG
-  auto-rickshaw.
+  auto-rickshaw, and some adoption of walking during the pandemic.
   \end{abstract}
   
  \end{frontmatter}
@@ -155,7 +155,7 @@ lock-down and post-pandemic situation.
 
 For the purpose of this paper, we use two questions that provide
 information about trip-making frequency by eight modes of
-transportation. The modes are \textbf{car}, \textbf{ridesharing} (e.g.,
+transportation. The modes are \textbf{car}, \textbf{ride-hailing} (e.g.,
 Uber, Pathao), \textbf{rickshaw}, \textbf{CNG auto-rickshaw} (a
 rickshaw-like vehicle powered by compressed natural gas), \textbf{bus},
 motorcycle/scooter (hereafter just \textbf{motorcycle}),
@@ -181,7 +181,7 @@ respectively. Considering travel before the pandemic, travel by
 rickshaw, and bus were relatively common for many respondents (few
 respondents reported \emph{never} using these modes). The mode most
 commonly used on a quotidian basis was walk. In contrast, respondents
-reported less frequent travel by car, ridesharing services, CNG
+reported less frequent travel by car, ride-hailing services, CNG
 auto-rickshaw, motorcycle, and bicycle. During the pandemic, we see that
 while there were reductions in mobility by car, motorcycle, and bicycle
 (with more respondents reporting never traveling by these modes), the
@@ -199,80 +199,84 @@ frequency class and mode, before and during COVID-19}
 \caption{\label{tab:table-transitions}\label{tab:cross-tabulation} Cross-tabulation of counts of travel frequency by mode, before and during COVID-19}
 \centering
 \resizebox{\linewidth}{!}{
-\begin{tabular}[t]{lrrrrrr}
+\begin{tabular}[t]{lllllll}
 \toprule
-  & Never & Rarely & Once a week & 2-3 per week & 4-5 per week & Almost daily\\
+\multicolumn{1}{c}{ } & \multicolumn{6}{c}{During} \\
+\cmidrule(l{3pt}r{3pt}){2-7}
+Before & Never & Rarely & Once a week & 2-3 times per week & 4-5 times per week & Almost daily\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{car}}\\
-\hspace{1em}Never & 267 & 20 & 5 & 1 & 1 & 2\\
-\hspace{1em}Rarely & 142 & 99 & 21 & 12 & 9 & 3\\
-\hspace{1em}Once a week & 11 & 23 & 19 & 7 & 2 & 3\\
-\hspace{1em}2-3 per week & 10 & 23 & 7 & 6 & 8 & 2\\
-\hspace{1em}4-5 per week & 4 & 9 & 5 & 6 & 12 & 4\\
-\hspace{1em}Almost daily & 6 & 15 & 6 & 10 & 0 & 20\\
+\hspace{1em}Never & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{267}}} & \cellcolor[HTML]{F79242}{\textcolor{white}{\textbf{20}}} & \cellcolor[HTML]{FBA238}{\textcolor{white}{\textbf{5}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA537}{\textcolor{white}{\textbf{2}}}\\
+\hspace{1em}Rarely & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{142}}} & \cellcolor[HTML]{7D03A8}{\textcolor{white}{\textbf{99}}} & \cellcolor[HTML]{F1824C}{\textcolor{white}{\textbf{21}}} & \cellcolor[HTML]{F79442}{\textcolor{white}{\textbf{12}}} & \cellcolor[HTML]{F99A3E}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}Once a week & \cellcolor[HTML]{C13B82}{\textcolor{white}{\textbf{11}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{23}}} & \cellcolor[HTML]{5801A4}{\textcolor{white}{\textbf{19}}} & \cellcolor[HTML]{E26660}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{F9993E}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}2-3 times per week & \cellcolor[HTML]{CA457A}{\textcolor{white}{\textbf{10}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{23}}} & \cellcolor[HTML]{E26660}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{E97257}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{DB5C68}{\textcolor{white}{\textbf{8}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}}\\
+\hspace{1em}4-5 times per week & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{910EA3}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{F1844C}{\textcolor{white}{\textbf{5}}} & \cellcolor[HTML]{E16462}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{12}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{4}}}\\
+\hspace{1em}Almost daily & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{6A00A8}{\textcolor{white}{\textbf{15}}} & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{B12A90}{\textcolor{white}{\textbf{10}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{20}}}\\
 \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{rideshare}}\\
-\hspace{1em}Never & 254 & 13 & 6 & 4 & 0 & 0\\
-\hspace{1em}Rarely & 192 & 44 & 12 & 1 & 1 & 1\\
-\hspace{1em}Once a week & 60 & 20 & 31 & 3 & 1 & 0\\
-\hspace{1em}2-3 per week & 49 & 12 & 9 & 7 & 2 & 0\\
-\hspace{1em}4-5 per week & 28 & 10 & 3 & 5 & 6 & 2\\
-\hspace{1em}Almost daily & 14 & 3 & 4 & 1 & 0 & 2\\
+\multicolumn{7}{l}{\textbf{ride-hailing}}\\
+\hspace{1em}Never & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{254}}} & \cellcolor[HTML]{F9983E}{\textcolor{white}{\textbf{13}}} & \cellcolor[HTML]{FB9F3A}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{FBA238}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}Rarely & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{192}}} & \cellcolor[HTML]{E56A5D}{\textcolor{white}{\textbf{44}}} & \cellcolor[HTML]{F89540}{\textcolor{white}{\textbf{12}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}}\\
+\hspace{1em}Once a week & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{60}}} & \cellcolor[HTML]{D35171}{\textcolor{white}{\textbf{20}}} & \cellcolor[HTML]{AC2794}{\textcolor{white}{\textbf{31}}} & \cellcolor[HTML]{F9983E}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{FBA238}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}2-3 times per week & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{49}}} & \cellcolor[HTML]{E26561}{\textcolor{white}{\textbf{12}}} & \cellcolor[HTML]{EB7557}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{F07F4F}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{FA9B3D}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}4-5 times per week & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{28}}} & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{10}}} & \cellcolor[HTML]{FA9B3D}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{F3874A}{\textcolor{white}{\textbf{5}}} & \cellcolor[HTML]{EF7C51}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}}\\
+\hspace{1em}Almost daily & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{14}}} & \cellcolor[HTML]{E66C5C}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{DB5C68}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{F79242}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{F07F4F}{\textcolor{white}{\textbf{2}}}\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{rickshaw}}\\
-\hspace{1em}Never & 51 & 9 & 6 & 0 & 1 & 0\\
-\hspace{1em}Rarely & 64 & 70 & 18 & 4 & 3 & 1\\
-\hspace{1em}Once a week & 36 & 38 & 45 & 9 & 3 & 3\\
-\hspace{1em}2-3 per week & 34 & 36 & 18 & 29 & 6 & 4\\
-\hspace{1em}4-5 per week & 21 & 30 & 7 & 16 & 15 & 8\\
-\hspace{1em}Almost daily & 45 & 65 & 30 & 18 & 16 & 41\\
+\hspace{1em}Never & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{51}}} & \cellcolor[HTML]{EB7655}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{F3854B}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FBA139}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}Rarely & \cellcolor[HTML]{340498}{\textcolor{white}{\textbf{64}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{70}}} & \cellcolor[HTML]{E26561}{\textcolor{white}{\textbf{18}}} & \cellcolor[HTML]{F99A3E}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FA9E3B}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}}\\
+\hspace{1em}Once a week & \cellcolor[HTML]{6001A6}{\textcolor{white}{\textbf{36}}} & \cellcolor[HTML]{4F02A2}{\textcolor{white}{\textbf{38}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{45}}} & \cellcolor[HTML]{F07F4F}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}2-3 times per week & \cellcolor[HTML]{2C0594}{\textcolor{white}{\textbf{34}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{36}}} & \cellcolor[HTML]{BE3885}{\textcolor{white}{\textbf{18}}} & \cellcolor[HTML]{6100A7}{\textcolor{white}{\textbf{29}}} & \cellcolor[HTML]{F89441}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{4}}}\\
+\hspace{1em}4-5 times per week & \cellcolor[HTML]{9511A1}{\textcolor{white}{\textbf{21}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{30}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{C8437B}{\textcolor{white}{\textbf{16}}} & \cellcolor[HTML]{D04D73}{\textcolor{white}{\textbf{15}}} & \cellcolor[HTML]{F99A3E}{\textcolor{white}{\textbf{8}}}\\
+\hspace{1em}Almost daily & \cellcolor[HTML]{99159F}{\textcolor{white}{\textbf{45}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{65}}} & \cellcolor[HTML]{DB5C68}{\textcolor{white}{\textbf{30}}} & \cellcolor[HTML]{FA9B3D}{\textcolor{white}{\textbf{18}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{16}}} & \cellcolor[HTML]{AE2892}{\textcolor{white}{\textbf{41}}}\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{CNG auto-rickshaw}}\\
-\hspace{1em}Never & 176 & 14 & 3 & 1 & 0 & 0\\
-\hspace{1em}Rarely & 213 & 95 & 14 & 4 & 1 & 3\\
-\hspace{1em}Once a week & 36 & 31 & 38 & 9 & 2 & 3\\
-\hspace{1em}2-3 per week & 29 & 18 & 16 & 14 & 8 & 3\\
-\hspace{1em}4-5 per week & 13 & 6 & 5 & 9 & 14 & 1\\
-\hspace{1em}Almost daily & 8 & 7 & 2 & 0 & 0 & 4\\
+\hspace{1em}Never & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{176}}} & \cellcolor[HTML]{F79044}{\textcolor{white}{\textbf{14}}} & \cellcolor[HTML]{FBA238}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{FCA537}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}Rarely & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{213}}} & \cellcolor[HTML]{BE3885}{\textcolor{white}{\textbf{95}}} & \cellcolor[HTML]{F89441}{\textcolor{white}{\textbf{14}}} & \cellcolor[HTML]{FBA238}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA438}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}Once a week & \cellcolor[HTML]{280592}{\textcolor{white}{\textbf{36}}} & \cellcolor[HTML]{5901A5}{\textcolor{white}{\textbf{31}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{38}}} & \cellcolor[HTML]{E97158}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{FA9E3B}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}2-3 times per week & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{29}}} & \cellcolor[HTML]{9D189D}{\textcolor{white}{\textbf{18}}} & \cellcolor[HTML]{B12A90}{\textcolor{white}{\textbf{16}}} & \cellcolor[HTML]{C23C81}{\textcolor{white}{\textbf{14}}} & \cellcolor[HTML]{E97257}{\textcolor{white}{\textbf{8}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}4-5 times per week & \cellcolor[HTML]{310597}{\textcolor{white}{\textbf{13}}} & \cellcolor[HTML]{CA457A}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{5}}} & \cellcolor[HTML]{930FA3}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{14}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}}\\
+\hspace{1em}Almost daily & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{8}}} & \cellcolor[HTML]{42039E}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{E16462}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{B12A90}{\textcolor{white}{\textbf{4}}}\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{bus}}\\
-\hspace{1em}Never & 116 & 9 & 3 & 0 & 0 & 0\\
-\hspace{1em}Rarely & 155 & 46 & 9 & 0 & 0 & 1\\
-\hspace{1em}Once a week & 73 & 32 & 22 & 4 & 0 & 0\\
-\hspace{1em}2-3 per week & 43 & 19 & 11 & 7 & 5 & 0\\
-\hspace{1em}4-5 per week & 60 & 6 & 5 & 4 & 12 & 1\\
-\hspace{1em}Almost daily & 103 & 21 & 10 & 11 & 2 & 10\\
+\hspace{1em}Never & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{116}}} & \cellcolor[HTML]{F79044}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{FA9E3B}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}Rarely & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{155}}} & \cellcolor[HTML]{D9586A}{\textcolor{white}{\textbf{46}}} & \cellcolor[HTML]{F89540}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FCA438}{\textcolor{white}{\textbf{1}}}\\
+\hspace{1em}Once a week & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{73}}} & \cellcolor[HTML]{BE3885}{\textcolor{white}{\textbf{32}}} & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{22}}} & \cellcolor[HTML]{F9973F}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}2-3 times per week & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{43}}} & \cellcolor[HTML]{BE3885}{\textcolor{white}{\textbf{19}}} & \cellcolor[HTML]{E06363}{\textcolor{white}{\textbf{11}}} & \cellcolor[HTML]{ED7A53}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{F3854B}{\textcolor{white}{\textbf{5}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}4-5 times per week & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{60}}} & \cellcolor[HTML]{F68E45}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{F79442}{\textcolor{white}{\textbf{5}}} & \cellcolor[HTML]{F9983E}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{E97357}{\textcolor{white}{\textbf{12}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}}\\
+\hspace{1em}Almost daily & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{103}}} & \cellcolor[HTML]{E97357}{\textcolor{white}{\textbf{21}}} & \cellcolor[HTML]{F79044}{\textcolor{white}{\textbf{10}}} & \cellcolor[HTML]{F68C45}{\textcolor{white}{\textbf{11}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{F79044}{\textcolor{white}{\textbf{10}}}\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{motorcycle}}\\
-\hspace{1em}Never & 467 & 22 & 12 & 3 & 1 & 8\\
-\hspace{1em}Rarely & 44 & 38 & 13 & 10 & 0 & 4\\
-\hspace{1em}Once a week & 11 & 11 & 34 & 3 & 3 & 3\\
-\hspace{1em}2-3 per week & 13 & 6 & 6 & 15 & 4 & 2\\
-\hspace{1em}4-5 per week & 6 & 4 & 0 & 4 & 14 & 3\\
-\hspace{1em}Almost daily & 1 & 3 & 2 & 4 & 3 & 23\\
+\hspace{1em}Never & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{467}}} & \cellcolor[HTML]{F99A3E}{\textcolor{white}{\textbf{22}}} & \cellcolor[HTML]{FB9F3A}{\textcolor{white}{\textbf{12}}} & \cellcolor[HTML]{FCA537}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FBA238}{\textcolor{white}{\textbf{8}}}\\
+\hspace{1em}Rarely & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{44}}} & \cellcolor[HTML]{46039F}{\textcolor{white}{\textbf{38}}} & \cellcolor[HTML]{DA5A6A}{\textcolor{white}{\textbf{13}}} & \cellcolor[HTML]{E56A5D}{\textcolor{white}{\textbf{10}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{F68C45}{\textcolor{white}{\textbf{4}}}\\
+\hspace{1em}Once a week & \cellcolor[HTML]{DF6263}{\textcolor{white}{\textbf{11}}} & \cellcolor[HTML]{DF6263}{\textcolor{white}{\textbf{11}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{34}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}2-3 times per week & \cellcolor[HTML]{4B03A1}{\textcolor{white}{\textbf{13}}} & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{15}}} & \cellcolor[HTML]{EF7C51}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}}\\
+\hspace{1em}4-5 times per week & \cellcolor[HTML]{C13B82}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{DB5C68}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{DB5C68}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{14}}} & \cellcolor[HTML]{E66C5C}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}Almost daily & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{F68C45}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{F9993E}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{F0804E}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{F68C45}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{23}}}\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{walk}}\\
-\hspace{1em}Never & 17 & 7 & 3 & 4 & 0 & 2\\
-\hspace{1em}Rarely & 26 & 53 & 13 & 6 & 2 & 4\\
-\hspace{1em}Once a week & 12 & 19 & 54 & 9 & 4 & 2\\
-\hspace{1em}2-3 per week & 10 & 14 & 12 & 26 & 13 & 4\\
-\hspace{1em}4-5 per week & 7 & 3 & 7 & 11 & 16 & 8\\
-\hspace{1em}Almost daily & 46 & 73 & 40 & 49 & 27 & 197\\
+\hspace{1em}Never & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{17}}} & \cellcolor[HTML]{C43E7F}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{EB7655}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{E3685F}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}} & \cellcolor[HTML]{F3854B}{\textcolor{white}{\textbf{2}}}\\
+\hspace{1em}Rarely & \cellcolor[HTML]{B7318A}{\textcolor{white}{\textbf{26}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{53}}} & \cellcolor[HTML]{E66C5C}{\textcolor{white}{\textbf{13}}} & \cellcolor[HTML]{F79044}{\textcolor{white}{\textbf{6}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{FA9B3D}{\textcolor{white}{\textbf{4}}}\\
+\hspace{1em}Once a week & \cellcolor[HTML]{E97257}{\textcolor{white}{\textbf{12}}} & \cellcolor[HTML]{D5536F}{\textcolor{white}{\textbf{19}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{54}}} & \cellcolor[HTML]{F1814D}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{FA9B3D}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}}\\
+\hspace{1em}2-3 times per week & \cellcolor[HTML]{DD5E66}{\textcolor{white}{\textbf{10}}} & \cellcolor[HTML]{BB3488}{\textcolor{white}{\textbf{14}}} & \cellcolor[HTML]{CD4A76}{\textcolor{white}{\textbf{12}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{26}}} & \cellcolor[HTML]{C5407E}{\textcolor{white}{\textbf{13}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{4}}}\\
+\hspace{1em}4-5 times per week & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{D8576B}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{930FA3}{\textcolor{white}{\textbf{11}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{16}}} & \cellcolor[HTML]{CA457A}{\textcolor{white}{\textbf{8}}}\\
+\hspace{1em}Almost daily & \cellcolor[HTML]{F3874A}{\textcolor{white}{\textbf{46}}} & \cellcolor[HTML]{DE5F65}{\textcolor{white}{\textbf{73}}} & \cellcolor[HTML]{F79143}{\textcolor{white}{\textbf{40}}} & \cellcolor[HTML]{F1824C}{\textcolor{white}{\textbf{49}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{27}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{197}}}\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{bicycle}}\\
-\hspace{1em}Never & 504 & 22 & 7 & 4 & 2 & 4\\
-\hspace{1em}Rarely & 59 & 43 & 20 & 4 & 2 & 4\\
-\hspace{1em}Once a week & 14 & 13 & 21 & 3 & 2 & 1\\
-\hspace{1em}2-3 per week & 3 & 4 & 5 & 7 & 2 & 0\\
-\hspace{1em}4-5 per week & 2 & 2 & 4 & 1 & 9 & 3\\
-\hspace{1em}Almost daily & 7 & 1 & 1 & 1 & 3 & 16\\
+\hspace{1em}Never & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{504}}} & \cellcolor[HTML]{FA9B3D}{\textcolor{white}{\textbf{22}}} & \cellcolor[HTML]{FCA238}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{FCA537}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{FCA537}{\textcolor{white}{\textbf{4}}}\\
+\hspace{1em}Rarely & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{59}}} & \cellcolor[HTML]{7501A8}{\textcolor{white}{\textbf{43}}} & \cellcolor[HTML]{D5546E}{\textcolor{white}{\textbf{20}}} & \cellcolor[HTML]{FA9C3C}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{FA9C3C}{\textcolor{white}{\textbf{4}}}\\
+\hspace{1em}Once a week & \cellcolor[HTML]{8808A6}{\textcolor{white}{\textbf{14}}} & \cellcolor[HTML]{9714A1}{\textcolor{white}{\textbf{13}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{21}}} & \cellcolor[HTML]{F58B47}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{F9983E}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}}\\
+\hspace{1em}2-3 times per week & \cellcolor[HTML]{C13B82}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{9E199D}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{7601A8}{\textcolor{white}{\textbf{5}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{DB5C68}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{0}}}\\
+\hspace{1em}4-5 times per week & \cellcolor[HTML]{F1844C}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{F1844C}{\textcolor{white}{\textbf{2}}} & \cellcolor[HTML]{CB4679}{\textcolor{white}{\textbf{4}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{9}}} & \cellcolor[HTML]{E16462}{\textcolor{white}{\textbf{3}}}\\
+\hspace{1em}Almost daily & \cellcolor[HTML]{C6417D}{\textcolor{white}{\textbf{7}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{FCA636}{\textcolor{white}{\textbf{1}}} & \cellcolor[HTML]{F1814D}{\textcolor{white}{\textbf{3}}} & \cellcolor[HTML]{0D0887}{\textcolor{white}{\textbf{16}}}\\
 \bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Darker cell colors indicate higher cell values in a row.}\\
 \end{tabular}}
 \end{table}
 
 The frequency of trip-making by other modes changed more noticeably: the
-frequency of travel by ridesharing services, rickshaw, CNG
+frequency of travel by ride-hailing services, rickshaw, CNG
 auto-rickshaw, and bus collapsed, with vastly more respondents reporting
 never using these modes during the pandemic than before. The frequency
 of walking trips also decreased (fewer respondents report walking almost
@@ -321,7 +325,7 @@ pandemic is quite small. In other words, there was a decline in use, but
 not complete discontinuation of this mode. The probability of traveling
 more frequently by car for those who originally never or rarely used
 this mode remained is low. In contrast, we see that the probabilities of
-never ridesharing during the pandemic are high irrespective of the
+never ride-hailing during the pandemic are high irrespective of the
 initial level of use of this mode of transportation, and the probability
 of using this mode more are fairly small.
 
@@ -329,7 +333,7 @@ of using this mode more are fairly small.
 \centering
 \includegraphics{Frequency-of-Travel-by-Mode-COVID-19-Bangladesh_files/figure-latex/circular-plots-transition-probabilities-1-1.pdf}
 \caption{\label{fig:circular-plot-1}Transition probabilities in trip
-frequency from before to during COVID-19: car and rideshare}
+frequency from before to during COVID-19: car and ride-hailing}
 \end{figure}
 
 The probabilities of change in trip frequency by rickshaw and CNG
@@ -347,7 +351,7 @@ frequency from before to during COVID-19: rickshaw and cng
 auto-rickshaw}
 \end{figure}
 
-After rideshare, the use of bus had the largest probabilities of
+After ride-hailing, the use of bus had the largest probabilities of
 discontinuation (Figure \ref{fig:circular-plot-3}). We see that even
 respondents who used this mode almost daily before the pandemic had
 close to 66\% chances of never using it during the contingency.
@@ -385,7 +389,7 @@ frequency from before to during COVID-19: bicycle and walk}
 The findings reported here provide important changes in mobility in a
 developing country during COVID-19. In general there was a loss of
 mobility across-the-board, but modes that require interaction with
-strangers (rideshare, bus, rickshaw, and CNG auto-rickshaw) were more
+strangers (ride-hailing, bus, rickshaw, and CNG auto-rickshaw) were more
 affected. Travel by car, motorcycle, and bicycle were somewhat less
 affected, and there is evidence of some adoption of walking during the
 pandemic.
